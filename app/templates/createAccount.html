@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-6">
+            <h1 class="mb-3">Registration</h1>
+            <form action="" method="post" name="create" novalidate>
+                {{ form.hidden_tag() }}
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">First Name</span>
+                    </div>
+                    {{ form.fName(class_='form-control') }}
+                </div>
+                {% for error in form.fName.errors %}
+                    <div class="alert alert-danger" role="alert">
+                    [{{ error }}]
+                    </div>
+                {% endfor %} 
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Last Name</span>
+                    </div>
+                    {{ form.lName(class_='form-control') }}
+                </div>
+                {% for error in form.lName.errors %}
+                    <div class="alert alert-danger" role="alert">
+                    [{{ error }}]
+                    </div>
+                {% endfor %}
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
+                    </div>
+                    {{ form.email(class_='form-control') }}
+                </div>
+                {% for error in form.email.errors %}
+                    <div class="alert alert-danger" role="alert">
+                    [{{ error }}]
+                    </div>
+                {% endfor %} 
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Password</span>
+                    </div>
+                    {{ form.password(class_='form-control') }}
+                </div>
+                {% for error in form.password.errors %}
+                    <div class="alert alert-danger" role="alert">
+                    [{{ error }}]
+                    </div>
+                {% endfor %}
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="{{ url_for('login') }}" class="btn btn-outline-primary">Login</a>
+                    <input type="submit" class="btn btn-primary" value="Create Account">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

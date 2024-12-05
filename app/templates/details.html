@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ url_for('static', filename='images/' ~ product.image) }}" alt="{{ product.title }}" class="img-fluid">
+        </div>
+    <div class="col-md-6">
+    <h1>{{ product.title }}</h1>
+    <p>{{ product.description }}</p>
+    <p>Genre: {{ product.genre }}</p>
+    <p>Difficulty: {{ product.difficulty }}</p>
+    <p>Price: £{{ product.price }}</p>
+    <form action="{{ url_for('details', ID=product.id) }}" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <label for="quantity">Quantity</label>
+            {{ form.quantity(class="form-control") }}
+        </div>
+        {% for error in form.quantity.errors %}
+                    <div class="alert alert-danger" role="alert">
+                    [{{ error }}]
+                    </div>
+                {% endfor %} 
+        <button type="submit" class="btn btn-primary">Add to Basket</button>
+    </form>
+</div>
+
+{% endblock %}

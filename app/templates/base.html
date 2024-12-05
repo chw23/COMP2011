@@ -1,0 +1,78 @@
+<!Doctype HTML>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> 
+
+  </head>
+    <style>
+    ul#menu li {
+        display:inline;
+    }
+    .icon-large {
+      font-size: 2rem;
+    }
+    </style>
+    {% if title %}
+        <title>{{ title }}</title>
+        {% else %}
+        <title> No title specified</title>
+        {% endif %}
+    </head>
+    <body>
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/" class="Home">ScorePi</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navBarGenre" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Genre
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbar_dropdown_genre">
+                <a class="dropdown-item" href="/classics">Classic</a>
+                <a class="dropdown-item" href="/film_musics">Film musics</a>
+                <a class="dropdown-item" href="/anime">Anime</a>
+                <a class="dropdown-item" href="/pop">Pop</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navBarDifficulties" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Difficulties
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbar_dropdown_difficulties">
+                <a class="dropdown-item" href="/beginner">Beginner</a>
+                <a class="dropdown-item" href="/intermediate">Intermediate</a>
+                <a class="dropdown-item" href="/advanced">Advanced</a>
+              </div>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/login" class="account page" aria-label="account page"><i class="bi bi-person-circle icon-large"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/basket" class="shopping basket" aria-label="shopping basket"><i class="bi bi-basket2-fill icon-large"></i></a>
+            </li>
+        </div>
+      </nav>
+
+      <div>
+        {% block content %}{% endblock %}
+      </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(function () {
+        $('#datepick').datetimepicker();
+      });
+    </script>
+  </body>
+</html>

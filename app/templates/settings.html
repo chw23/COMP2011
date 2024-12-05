@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-1"></div>
+            <div class="col-8">
+                <h1>Edit account settings</h1>
+                
+                <form action="" method="post" name="edit assessment" novalidate>
+                    {{ form.hidden_tag() }}
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">First Name</span>
+                            </div>
+                            {{ form.fName(class="form-control") }}
+                        </div>
+                        {% for error in form.fName.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            [{{ error }}]
+                        </div>
+                        {% endfor %}
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Last Name</span>
+                            </div>
+                            {{ form.lName(class="form-control") }}
+                        </div>
+                        {% for error in form.lName.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            [{{ error }}]
+                        </div>
+                        {% endfor %}
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+                            </div>
+                            {{ form.email(class="form-control") }}
+                        </div>
+                        {% for error in form.password.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            [{{ error }}]
+                        </div>
+                        {% endfor %}
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                            </div>
+                            {{ form.password(class="form-control") }}
+                        </div>
+                        {% for error in form.password.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            [{{ error }}]
+                        </div>
+                        {% endfor %}
+                        <input type="submit" class="btn btn-primary" value="Save">
+                </form>
+            </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-1"></div>
+            <div class="col-6">
+                <h1 class="mb-4">Order Information</h1>
+                {% if orders %}
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Order Date</th>
+                                <th>Product Title</th>
+                                <th>Quantity</th>
+                                <th>Total Price</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                            {% for item in order.basket.items %}
+                                <tr>
+                                    <td>{{ order.order_date.strftime('%Y-%m-%d') }}</td>
+                                    <td>{{ item.product.title }}</td>
+                                    <td>{{ item.quantity }}</td>
+                                    <td>£{{ (item.product.price * item.quantity) | round(2) }}</td>
+                                    <td>{{ order.status }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p>You have no past orders.</p>
+                {% endif %}
+            </div>
+    </div>
+</div>
+
+{% endblock %}åß

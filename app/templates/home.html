@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    {% for product in products %}
+        <div class ="row mb-4"></div>
+        <!--https://jinja.palletsprojects.com/en/stable/templates/-->
+        {% if loop.index0 % 3 == 0 %}
+            <div class="row">
+        {% endif %}
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+            <img src="{{ url_for('static', filename='images/' ~ product.image) }}" class="card-img-top" 
+                        alt="{{ product.title }}" style="width: 288px; height: 288px;">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.title }}</h5>
+                <p class="card-text">Genre: {{ product.genre }}</p>
+                <p class="card-text">Difficulty: {{ product.difficulty }}</p>
+                <p class="card-text">£{{ product.price }}</p>
+                <a href="{{ url_for('details', ID=product.id) }}" aria-labelledby="Details_button" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        </div>
+        {% if loop.index0 % 3 == 2 or loop.last %}
+            </div>
+        {% endif %}
+    {% endfor %}
+  </div>
+{% endblock %} 
